@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { ResultFunction, verifyJwt } from '../helpers/utils';
 import { ReturnStatus } from '../types/generic';
-import User from '../models/user';
 import { JsonWebTokenError, JwtPayload } from 'jsonwebtoken';
+import prisma from '../helpers/prisma';
 
 const authMiddleWare = async (
 	req: Request,
@@ -45,7 +45,7 @@ const authMiddleWare = async (
 
 	const id = (payload as JwtPayload).id;
 	// find user and add to res object
-	const user = await User.findById(id);
+	const user = await prisma.user.findUnique({ where: { id: id } });
 	res.locals.user = user;
 
 	next();

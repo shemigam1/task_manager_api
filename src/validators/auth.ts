@@ -12,7 +12,3 @@ export const signupValidator = Joi.object<ISignup>({
     email: Joi.string().email().required(),
     password: Joi.string().required()
 })
-
-export const forgotPasswordValidator = Joi.object<ISignup>({
-    email: Joi.string().email().required(),
-})

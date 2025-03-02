@@ -1,10 +1,7 @@
-import crypto from 'crypto';
 import { ILogin, ISignup, LoginData, SignupData } from '../../types/auth';
 import { ResultFunction, signJwt } from '../../helpers/utils';
 import { ReturnStatus } from '../../types/generic';
 import { comparePassword, hashPassword } from '../../helpers/hash';
-import User from '../../models/user';
-import { loginValidator, signupValidator } from '../../validators/auth';
 import prisma from '../../helpers/prisma';
 
 class Auth {
